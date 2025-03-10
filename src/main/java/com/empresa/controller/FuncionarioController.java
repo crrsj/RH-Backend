@@ -40,7 +40,7 @@ public class FuncionarioController {
 	    })           
 	public ResponseEntity<FuncionarioDto>cadastrarFuncionario(@RequestBody @Valid FuncionarioDto funcionario){
 		var cadastre = funcionarioService.cadastrarFuncionario(funcionario);
-		var uri = ServletUriComponentsBuilder.fromCurrentRequest().path("funcionario/{id}")
+		var uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(funcionario.id()).toUri();
 		return ResponseEntity.created(uri).body(new FuncionarioDto(cadastre));
 	}
