@@ -43,4 +43,8 @@ public record FuncionarioDto(
 			cadastre.getStatus());
 	}
 
+	public String getDataDemissao() {
+		return dataDemissao == null ? "" : dataDemissao.toString();
+	}
+
 }

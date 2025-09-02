@@ -13,14 +13,9 @@ import com.empresa.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -29,6 +24,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "funcionarios")
+@Builder
 public class Funcionario implements Serializable {
 	
 	
@@ -44,8 +40,9 @@ public class Funcionario implements Serializable {
 	private double salario;
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")    
 	private LocalDate dataAdmissao;
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")    
-    private LocalDate dataDemissao;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+	@Column(nullable = true)
+    private LocalDate dataDemissao ;
     @Enumerated(EnumType.STRING)
     private Status status;
     
